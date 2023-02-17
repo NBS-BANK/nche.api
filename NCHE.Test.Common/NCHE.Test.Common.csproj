@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Bogus" Version="34.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\VasMicroservices.NCHE.Application\VasMicroservices.NCHE.Application.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="CommonLibraries.Application">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Application.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>

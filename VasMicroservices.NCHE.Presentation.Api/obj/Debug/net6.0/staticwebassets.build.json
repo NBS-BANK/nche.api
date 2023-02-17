@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MNHylie9BCksCL+HzCNH4HJrU+2YOM6E6hL+0vPy0Zc=",
+  "Source": "VasMicroservices.NCHE.Presentation.Api",
+  "BasePath": "_content/VasMicroservices.NCHE.Presentation.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

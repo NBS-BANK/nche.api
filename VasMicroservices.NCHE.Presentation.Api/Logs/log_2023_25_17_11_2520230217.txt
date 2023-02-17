@@ -1,0 +1,81 @@
+2023-02-17 11:25:23.118 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'VasPayment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-02-17 11:25:23.262 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-17 11:25:23.605 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'VasPayment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-02-17 11:25:24.705 +02:00 [INF] Executed DbCommand (1,020ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [NCHEPayments];
+2023-02-17 11:25:25.201 +02:00 [INF] Executed DbCommand (494ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [NCHEPayments] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2023-02-17 11:25:25.265 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-02-17 11:25:25.379 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2023-02-17 11:25:25.400 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-02-17 11:25:25.425 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-02-17 11:25:25.432 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2023-02-17 11:25:25.451 +02:00 [INF] Applying migration '20230217092440_FirstMigration'.
+2023-02-17 11:25:25.509 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [EndpointLogs] (
+    [RecordId] int NOT NULL IDENTITY,
+    [RequestUrl] nvarchar(max) NULL,
+    [RawRequest] nvarchar(max) NULL,
+    [RawResponse] nvarchar(max) NULL,
+    [Code] int NULL,
+    [Success] int NULL,
+    [Message] nvarchar(max) NULL,
+    [RequestTime] datetime2 NULL,
+    [ResponseTime] datetime2 NULL,
+    CONSTRAINT [PK_EndpointLogs] PRIMARY KEY ([RecordId])
+);
+2023-02-17 11:25:25.526 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [VasPayments] (
+    [VasPaymentId] int NOT NULL IDENTITY,
+    [TransactionDate] datetime2 NOT NULL,
+    [PaymentReferenceNumber] nvarchar(max) NULL,
+    [Code] nvarchar(max) NULL,
+    [ServiceName] nvarchar(max) NULL,
+    [CustomerId] nvarchar(max) NULL,
+    [CustomerName] nvarchar(max) NULL,
+    [CustomerPhone] nvarchar(max) NULL,
+    [PaymentDetails] nvarchar(max) NULL,
+    [Amount] decimal(18,2) NOT NULL,
+    [Reversed] int NULL,
+    [ReversedTime] datetime2 NULL,
+    [NcheTxnRef] nvarchar(max) NULL,
+    [NchestatusCode] int NULL,
+    [RequestString] nvarchar(max) NULL,
+    [ResponseString] nvarchar(max) NULL,
+    CONSTRAINT [PK_VasPayments] PRIMARY KEY ([VasPaymentId])
+);
+2023-02-17 11:25:25.584 +02:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [VasOfsLog] (
+    [RecordId] int NOT NULL IDENTITY,
+    [VasPaymentId] int NOT NULL,
+    [OfscompanyCode] nvarchar(max) NULL,
+    [TellerId] nvarchar(max) NULL,
+    [TellerName] nvarchar(max) NULL,
+    [DebitAccountNumber] nvarchar(max) NULL,
+    [TxnRef] nvarchar(max) NULL,
+    [Ofssuccess] tinyint NULL,
+    [Ofsrequest] nvarchar(max) NULL,
+    [Ofsresponse] nvarchar(max) NULL,
+    [Ofsmessage] nvarchar(max) NULL,
+    CONSTRAINT [PK_VasOfsLog] PRIMARY KEY ([RecordId]),
+    CONSTRAINT [FK_VasOfsLog_VasPayments_VasPaymentId] FOREIGN KEY ([VasPaymentId]) REFERENCES [VasPayments] ([VasPaymentId]) ON DELETE CASCADE
+);
+2023-02-17 11:25:25.630 +02:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_VasOfsLog_VasPaymentId] ON [VasOfsLog] ([VasPaymentId]);
+2023-02-17 11:25:25.662 +02:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20230217092440_FirstMigration', N'6.0.11');

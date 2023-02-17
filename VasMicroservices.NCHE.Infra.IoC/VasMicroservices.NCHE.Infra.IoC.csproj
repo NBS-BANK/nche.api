@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VasMicroservices.NCHE.Application\VasMicroservices.NCHE.Application.csproj" />
+    <ProjectReference Include="..\VasMicroservices.NCHE.Infra.Data\VasMicroservices.NCHE.Infra.Data.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="CommonLibraries.Domain.Core">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Domain.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="CommonLibraries.Domain">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Domain.dll</HintPath>
+		</Reference>
+		<Reference Include="CommonLibraries.Application">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Application.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>

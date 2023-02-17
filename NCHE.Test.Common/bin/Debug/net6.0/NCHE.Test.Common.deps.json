@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "NCHE.Test.Common/1.0.0": {
+        "runtime": {
+          "NCHE.Test.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NCHE.Test.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

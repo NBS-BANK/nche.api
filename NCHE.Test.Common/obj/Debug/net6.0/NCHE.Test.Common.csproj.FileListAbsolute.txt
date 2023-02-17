@@ -1,0 +1,12 @@
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\NCHE.Test.Common.deps.json
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\NCHE.Test.Common.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\NCHE.Test.Common.pdb
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.csproj.AssemblyReference.cache
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.AssemblyInfoInputs.cache
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.AssemblyInfo.cs
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.csproj.CoreCompileInputs.cache
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\refint\NCHE.Test.Common.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.pdb
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\ref\NCHE.Test.Common.dll

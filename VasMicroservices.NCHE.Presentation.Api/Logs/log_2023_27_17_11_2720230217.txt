@@ -1,0 +1,61 @@
+2023-02-17 11:27:42.630 +02:00 [INF] User profile is available. Using 'C:\Users\msasa.l\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-02-17 11:27:43.064 +02:00 [INF] Now listening on: http://localhost:5068
+2023-02-17 11:27:43.066 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-02-17 11:27:43.067 +02:00 [INF] Hosting environment: Development
+2023-02-17 11:27:43.068 +02:00 [INF] Content root path: C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api
+2023-02-17 11:27:43.824 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-17 11:27:43.864 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-02-17 11:27:44.079 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 260.1592ms
+2023-02-17 11:27:44.347 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-17 11:27:44.352 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 4.4466ms
+2023-02-17 11:27:44.604 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-17 11:27:44.733 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 129.4671ms
+2023-02-17 11:28:33.998 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - -
+2023-02-17 11:28:34.008 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-17 11:28:34.033 +02:00 [INF] Route matched with {action = "SearchTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchTransaction(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-17 11:28:56.641 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'VasPayment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-02-17 11:28:56.809 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-17 11:28:57.606 +02:00 [INF] Executed DbCommand (81ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-17 11:28:57.907 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchTransaction (VasMicroservices.NCHE.Presentation.Api) in 23867.102ms
+2023-02-17 11:28:57.910 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-17 11:28:58.137 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed. A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. (api.nche.ac.mw:443): GET https://api.nche.ac.mw/transaction?invoice_number=1234
+ ---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. (api.nche.ac.mw:443)
+ ---> System.Net.Sockets.SocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   --- End of inner exception stack trace ---
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 168
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchTransaction(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-17 11:28:58.151 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - - - 500 - application/json 24153.8355ms
