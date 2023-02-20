@@ -131,14 +131,11 @@ namespace NCHE.Test.Common
         public Task<(T result, int statusCode)> PostAsync<T>(string url,  Dictionary<string, string> headers, object data, Func<string, string, int, Task> logRequest = null) where T : class
         {
             Type t = data.GetType();
-            PropertyInfo authInfoProperty = t.GetProperty("auth_info");
-            object sessionIdData = authInfoProperty.GetValue(data, null);
-            var sessionIdType = sessionIdData.GetType();
-            var sessionIdProperty = sessionIdType.GetProperty("session_id");
-            var sessionId = sessionIdProperty.GetValue(sessionIdData, null).ToString();
+            PropertyInfo authInfoProperty = t.GetProperty("invoice_number");
+            object invoice = authInfoProperty.GetValue(data, null);
             var res = Response<T>();
-            return Task.FromResult((result: sessionId == Constants.OKAY_CODE || sessionId == Constants.OKAY_CREATED_CODE ? res : null,
-                statusCode: int.Parse(sessionId)));
+            return Task.FromResult((result: invoice == Constants.OKAY_CODE ? res : null,
+                statusCode: int.Parse(invoice.ToString())));
         }
 
         public Task<(T result, int statusCode)> PutAsync<T>(string url,  Dictionary<string, string> headers, object data, Func<string, string, int, Task> logRequest = null) where T : class

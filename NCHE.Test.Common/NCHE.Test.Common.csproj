@@ -11,12 +11,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
+		<ProjectReference Include="..\VasMicroservices.NCHE.Infra.Data\VasMicroservices.NCHE.Infra.Data.csproj" />
 	  <ProjectReference Include="..\VasMicroservices.NCHE.Application\VasMicroservices.NCHE.Application.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<Reference Include="CommonLibraries.Infrastrucure.Bus">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Infrastrucure.Bus.dll</HintPath>
+		</Reference>
+
 		<Reference Include="CommonLibraries.Application">
 			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Application.dll</HintPath>
+		</Reference>
+		<Reference Include="CommonLibraries.Domain">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Domain.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 

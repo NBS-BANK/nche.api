@@ -2208,7 +2208,8 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Bogus >= 34.0.2",
-      "VasMicroservices.NCHE.Application >= 1.0.0"
+      "VasMicroservices.NCHE.Application >= 1.0.0",
+      "VasMicroservices.NCHE.Infra.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2240,6 +2241,9 @@
           "projectReferences": {
             "C:\\Users\\msasa.l\\source\\repos\\VasMicroservices.NCHE\\VasMicroservices.NCHE.Application\\VasMicroservices.NCHE.Application.csproj": {
               "projectPath": "C:\\Users\\msasa.l\\source\\repos\\VasMicroservices.NCHE\\VasMicroservices.NCHE.Application\\VasMicroservices.NCHE.Application.csproj"
+            },
+            "C:\\Users\\msasa.l\\source\\repos\\VasMicroservices.NCHE\\VasMicroservices.NCHE.Infra.Data\\VasMicroservices.NCHE.Infra.Data.csproj": {
+              "projectPath": "C:\\Users\\msasa.l\\source\\repos\\VasMicroservices.NCHE\\VasMicroservices.NCHE.Infra.Data\\VasMicroservices.NCHE.Infra.Data.csproj"
             }
           }
         }

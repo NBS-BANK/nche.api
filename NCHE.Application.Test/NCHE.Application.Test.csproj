@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Flurl" Version="3.0.6" />
+	  <PackageReference Include="Flurl.Http" Version="3.2.4" />
+	  <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
+	  <PackageReference Include="Moq" Version="4.18.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -19,5 +23,24 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NCHE.Test.Common\NCHE.Test.Common.csproj" />
+	<ProjectReference Include="..\VasMicroservices.NCHE.Infra.Data\VasMicroservices.NCHE.Infra.Data.csproj" />
+    <ProjectReference Include="..\VasMicroservices.NCHE.Application\VasMicroservices.NCHE.Application.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="CommonLibraries.Infrastrucure.Bus">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Infrastrucure.Bus.dll</HintPath>
+		</Reference>
+
+		<Reference Include="CommonLibraries.Application">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Application.dll</HintPath>
+		</Reference>
+		<Reference Include="CommonLibraries.Domain">
+			<HintPath>..\VasMicroservices.NCHE.Presentation.Api\CommonLibraries.Domain.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>
