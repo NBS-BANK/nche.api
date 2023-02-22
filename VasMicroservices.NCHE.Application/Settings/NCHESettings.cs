@@ -22,11 +22,11 @@ namespace VasMicroservices.NCHE.Application.Settings
                 return _configuration["NCHESettings:NCHEendpoint"];
             }
         }
-        public string ClientKey
+        public string AuthToken
         {
             get
             {
-                return _configuration["NCHESettings:ClientKey"];
+                return _configuration["NCHESettings:AuthToken"];
             }
         }
         public string ClientId

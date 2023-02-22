@@ -1,0 +1,249 @@
+2023-02-22 08:42:59.148 +02:00 [INF] User profile is available. Using 'C:\Users\msasa.l\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-02-22 08:42:59.611 +02:00 [INF] Now listening on: http://localhost:5068
+2023-02-22 08:42:59.612 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-02-22 08:42:59.613 +02:00 [INF] Hosting environment: Development
+2023-02-22 08:42:59.614 +02:00 [INF] Content root path: C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api
+2023-02-22 08:43:00.210 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 08:43:00.256 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-02-22 08:43:00.489 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 282.8990ms
+2023-02-22 08:43:00.525 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 08:43:00.539 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 13.9066ms
+2023-02-22 08:43:00.890 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 08:43:01.028 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 137.9035ms
+2023-02-22 08:43:07.506 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/123 - -
+2023-02-22 08:43:07.513 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:43:07.540 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:43:09.940 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'VasPayment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-02-22 08:43:10.129 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:43:10.984 +02:00 [INF] Executed DbCommand (82ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:43:11.299 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 3754.0723ms
+2023-02-22 08:43:11.302 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:43:11.554 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 406 (Not Acceptable): GET https://api.nche.ac.mw/transaction?invoice_number=123
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 170
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:43:11.564 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/123 - - - 500 - application/json 4057.8665ms
+2023-02-22 08:44:30.721 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/123 - -
+2023-02-22 08:44:30.732 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:44:30.733 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:44:31.944 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:44:32.070 +02:00 [INF] Executed DbCommand (90ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:44:32.243 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 1506.9189ms
+2023-02-22 08:44:32.245 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:44:32.368 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 406 (Not Acceptable): GET https://api.nche.ac.mw/transaction?invoice_number=123
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 170
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:44:32.371 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/123 - - - 500 - application/json 1650.6980ms
+2023-02-22 08:44:51.815 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 08:44:51.837 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 21.0679ms
+2023-02-22 08:44:51.866 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 08:44:51.867 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 1.3896ms
+2023-02-22 08:44:52.105 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 08:44:52.109 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4.2884ms
+2023-02-22 08:44:52.120 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/favicon-32x32.png - -
+2023-02-22 08:44:52.132 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-02-22 08:44:52.133 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/favicon-32x32.png - - - 200 628 image/png 13.0153ms
+2023-02-22 08:44:59.071 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - -
+2023-02-22 08:44:59.072 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:44:59.078 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:45:00.042 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:45:00.076 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:45:00.240 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 1159.2633ms
+2023-02-22 08:45:00.244 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:45:00.371 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 403 (Forbidden): GET https://api.nche.ac.mw/transaction?invoice_number=1234
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber)
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:45:00.375 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - - - 500 - application/json 1304.6911ms
+2023-02-22 08:45:09.656 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 08:45:09.667 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 10.1763ms
+2023-02-22 08:45:09.691 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 08:45:09.693 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 1.9075ms
+2023-02-22 08:45:09.948 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 08:45:09.950 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.0554ms
+2023-02-22 08:45:26.926 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - -
+2023-02-22 08:45:26.929 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:45:26.933 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:45:28.349 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:45:28.381 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:45:28.550 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 1615.536ms
+2023-02-22 08:45:28.554 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:45:28.691 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 406 (Not Acceptable): GET https://api.nche.ac.mw/transaction?invoice_number=1234
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber)
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:45:28.695 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - - - 500 - application/json 1769.0189ms
+2023-02-22 08:45:44.221 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 08:45:44.236 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 15.2915ms
+2023-02-22 08:45:44.268 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 08:45:44.270 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 1.7868ms
+2023-02-22 08:45:44.694 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 08:45:44.697 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.9867ms
+2023-02-22 08:45:51.860 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - -
+2023-02-22 08:45:51.863 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:45:51.867 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:45:53.109 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:45:53.280 +02:00 [INF] Executed DbCommand (160ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:45:53.503 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 1633.3116ms
+2023-02-22 08:45:53.505 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:45:53.651 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 406 (Not Acceptable): GET https://api.nche.ac.mw/transaction?invoice_number=1234
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber)
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:45:53.655 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - - - 500 - application/json 1794.7643ms
+2023-02-22 08:48:37.214 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 08:48:37.230 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 16.1711ms
+2023-02-22 08:48:37.269 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 08:48:37.272 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 3.5435ms
+2023-02-22 08:48:37.825 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 08:48:37.827 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.5389ms
+2023-02-22 08:48:53.724 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - -
+2023-02-22 08:48:53.727 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:48:53.732 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:48:54.869 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:48:54.882 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:48:55.063 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 1328.8987ms
+2023-02-22 08:48:55.065 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:48:55.217 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 406 (Not Acceptable): GET https://api.nche.ac.mw/transaction?invoice_number=1234
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber)
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:48:55.221 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - - - 500 - application/json 1496.4969ms
+2023-02-22 08:50:27.391 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 08:50:27.429 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 38.1060ms
+2023-02-22 08:50:27.453 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 08:50:27.455 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 1.3976ms
+2023-02-22 08:50:27.864 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 08:50:27.866 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.1377ms
+2023-02-22 08:51:06.524 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - -
+2023-02-22 08:51:06.527 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:51:06.532 +02:00 [INF] Route matched with {action = "SearchInvoice", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchInvoice(System.String) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 08:51:28.900 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 08:51:28.910 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 08:51:29.117 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api) in 22582.9527ms
+2023-02-22 08:51:29.123 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 08:51:29.293 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 406 (Not Acceptable): GET https://api.nche.ac.mw/transaction?invoice_number=1234
+   at VasMicroservices.NCHE.Application.Services.NCHEService.ValidateInvoiceAsync(String invoiceNumber)
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.SearchInvoice(String invoiceNumber) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 08:51:29.298 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/api/nche/searchInvoice/1234 - - - 500 - application/json 22774.5203ms

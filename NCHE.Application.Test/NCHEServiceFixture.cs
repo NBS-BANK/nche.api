@@ -28,7 +28,7 @@ namespace NRB.Application.Test
         {
             _settings = new Mock<INCHESettings>();
             _settings.Setup(x => x.ClientId).Returns("xxxxxxxxxxx");
-            _settings.Setup(x => x.ClientKey).Returns("xxxxxxx");
+            _settings.Setup(x => x.AuthToken).Returns("xxxxxxx");
             _settings.Setup(x => x.Url).Returns("https://10.100.101.24:8243/");
             _requestService = new Mock<ApiMockRequest>();
 

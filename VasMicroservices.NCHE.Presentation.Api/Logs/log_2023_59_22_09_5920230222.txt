@@ -1,0 +1,103 @@
+2023-02-22 09:59:08.135 +02:00 [INF] User profile is available. Using 'C:\Users\msasa.l\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-02-22 09:59:08.709 +02:00 [INF] Now listening on: http://localhost:5068
+2023-02-22 09:59:08.711 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-02-22 09:59:08.712 +02:00 [INF] Hosting environment: Development
+2023-02-22 09:59:08.713 +02:00 [INF] Content root path: C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api
+2023-02-22 09:59:09.482 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 09:59:09.547 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-02-22 09:59:09.826 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 348.5197ms
+2023-02-22 09:59:10.120 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 09:59:10.128 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 7.1585ms
+2023-02-22 09:59:10.352 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 09:59:10.466 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 113.6284ms
+2023-02-22 09:59:40.817 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 483
+2023-02-22 09:59:40.824 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 09:59:40.849 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 09:59:43.419 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'VasPayment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-02-22 09:59:43.598 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 09:59:44.350 +02:00 [INF] Executed DbCommand (83ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 09:59:44.653 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 3797.7494ms
+2023-02-22 09:59:44.656 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 09:59:44.962 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 422 (Unprocessable Entity): POST https://api.nche.ac.mw/transaction
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 09:59:44.974 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 483 - 500 - application/json 4156.6669ms
+2023-02-22 10:00:12.725 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 483
+2023-02-22 10:00:12.749 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:00:12.751 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 10:01:17.632 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 10:01:17.662 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 10:01:17.848 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 65093.2929ms
+2023-02-22 10:01:17.850 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:01:17.969 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 422 (Unprocessable Entity): POST https://api.nche.ac.mw/transaction
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 10:01:17.972 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 483 - 500 - application/json 65252.9531ms
+2023-02-22 10:01:27.676 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 480
+2023-02-22 10:01:27.677 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:01:27.679 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 10:01:30.905 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 10:01:30.937 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 10:01:31.065 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 3377.9723ms
+2023-02-22 10:01:31.067 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:01:31.239 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 422 (Unprocessable Entity): POST https://api.nche.ac.mw/transaction
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 10:01:31.242 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 480 - 500 - application/json 3566.1096ms
+2023-02-22 10:02:12.699 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484
+2023-02-22 10:02:12.701 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:02:12.705 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).

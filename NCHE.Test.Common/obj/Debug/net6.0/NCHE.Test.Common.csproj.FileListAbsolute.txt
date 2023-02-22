@@ -10,3 +10,13 @@ C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\n
 C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\refint\NCHE.Test.Common.dll
 C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.pdb
 C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\ref\NCHE.Test.Common.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\CommonLibraries.Application.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\CommonLibraries.Domain.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\CommonLibraries.Infrastrucure.Bus.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\VasMicroservices.NCHE.Application.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\VasMicroservices.NCHE.Infra.Data.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\CommonLibraries.Domain.Core.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\CommonLibraries.Infrastructure.MessageQueue.dll
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\VasMicroservices.NCHE.Infra.Data.pdb
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\bin\Debug\net6.0\VasMicroservices.NCHE.Application.pdb
+C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\NCHE.Test.Common\obj\Debug\net6.0\NCHE.Test.Common.csproj.CopyComplete

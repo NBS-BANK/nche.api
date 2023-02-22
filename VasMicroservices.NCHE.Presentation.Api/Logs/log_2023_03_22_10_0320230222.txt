@@ -1,0 +1,204 @@
+2023-02-22 10:03:06.380 +02:00 [INF] User profile is available. Using 'C:\Users\msasa.l\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-02-22 10:03:06.836 +02:00 [INF] Now listening on: http://localhost:5068
+2023-02-22 10:03:06.838 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-02-22 10:03:06.839 +02:00 [INF] Hosting environment: Development
+2023-02-22 10:03:06.840 +02:00 [INF] Content root path: C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api
+2023-02-22 10:03:07.842 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/index.html - -
+2023-02-22 10:03:07.893 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-02-22 10:03:08.164 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/index.html - - - 200 - text/html;charset=utf-8 327.7377ms
+2023-02-22 10:03:08.215 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - -
+2023-02-22 10:03:08.223 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/_framework/aspnetcore-browser-refresh.js - - - 200 12034 application/javascript;+charset=utf-8 7.9976ms
+2023-02-22 10:03:08.664 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - -
+2023-02-22 10:03:08.835 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5068/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 171.5391ms
+2023-02-22 10:03:46.958 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484
+2023-02-22 10:03:46.964 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:03:46.991 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 10:04:27.329 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'VasPayment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-02-22 10:04:27.503 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 10:04:28.285 +02:00 [INF] Executed DbCommand (84ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 10:04:28.609 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 41608.9029ms
+2023-02-22 10:04:28.613 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:04:28.868 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed. The SSL connection could not be established, see inner exception: POST https://api.nche.ac.mw/transaction
+ ---> System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+ ---> System.Net.Sockets.SocketException (10054): An existing connection was forcibly closed by the remote host.
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.GetResult(Int16 token)
+   at System.Net.Http.HttpConnection.ReadAsync(Memory`1 destination)
+   at System.Net.Http.HttpConnection.RawConnectionStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.<FillHandshakeBufferAsync>g__InternalFillHandshakeBufferAsync|189_0[TIOAdapter](TIOAdapter adap, ValueTask`1 task, Int32 minSize)
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   --- End of inner exception stack trace ---
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 10:04:28.881 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484 - 500 - application/json 41922.1442ms
+2023-02-22 10:04:34.198 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484
+2023-02-22 10:04:34.205 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:04:34.210 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 10:04:52.519 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 10:04:52.544 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 10:04:52.677 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 18465.4336ms
+2023-02-22 10:04:52.679 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:04:52.789 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed. The SSL connection could not be established, see inner exception: POST https://api.nche.ac.mw/transaction
+ ---> System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+ ---> System.Net.Sockets.SocketException (10054): An existing connection was forcibly closed by the remote host.
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.GetResult(Int16 token)
+   at System.Net.Http.HttpConnection.ReadAsync(Memory`1 destination)
+   at System.Net.Http.HttpConnection.RawConnectionStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.<FillHandshakeBufferAsync>g__InternalFillHandshakeBufferAsync|189_0[TIOAdapter](TIOAdapter adap, ValueTask`1 task, Int32 minSize)
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   --- End of inner exception stack trace ---
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 10:04:52.796 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484 - 500 - application/json 18598.0221ms
+2023-02-22 10:06:57.602 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484
+2023-02-22 10:06:57.609 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:06:57.613 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 10:07:01.082 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 10:07:01.101 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 10:07:01.271 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 3655.7382ms
+2023-02-22 10:07:01.272 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:07:01.389 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed with status code 422 (Unprocessable Entity): POST https://api.nche.ac.mw/transaction
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 10:07:01.392 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484 - 500 - application/json 3789.8062ms
+2023-02-22 10:07:31.272 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484
+2023-02-22 10:07:31.279 +02:00 [INF] Executing endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:07:31.281 +02:00 [INF] Route matched with {action = "PostTransaction", controller = "Main"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostTransaction(VasMicroservices.NCHE.Presentation.Api.Models.PostTransactionRequest) on controller VasMicroservices.NCHE.Presentation.Api.Controllers.MainController (VasMicroservices.NCHE.Presentation.Api).
+2023-02-22 10:08:04.461 +02:00 [INF] Entity Framework Core 6.0.11 initialized 'NCHEPaymentsContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+2023-02-22 10:08:04.474 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [EndpointLogs] ([Code], [Message], [RawRequest], [RawResponse], [RequestTime], [RequestUrl], [ResponseTime], [Success])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [RecordId]
+FROM [EndpointLogs]
+WHERE @@ROWCOUNT = 1 AND [RecordId] = scope_identity();
+2023-02-22 10:08:04.607 +02:00 [INF] Executed action VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api) in 33323.4049ms
+2023-02-22 10:08:04.608 +02:00 [INF] Executed endpoint 'VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction (VasMicroservices.NCHE.Presentation.Api)'
+2023-02-22 10:08:04.727 +02:00 [ERR] Exception occur: Flurl.Http.FlurlHttpException: Call failed. The SSL connection could not be established, see inner exception: POST https://api.nche.ac.mw/transaction
+ ---> System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..
+ ---> System.Net.Sockets.SocketException (10054): An existing connection was forcibly closed by the remote host.
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.GetResult(Int16 token)
+   at System.Net.Http.HttpConnection.ReadAsync(Memory`1 destination)
+   at System.Net.Http.HttpConnection.RawConnectionStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.<FillHandshakeBufferAsync>g__InternalFillHandshakeBufferAsync|189_0[TIOAdapter](TIOAdapter adap, ValueTask`1 task, Int32 minSize)
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Flurl.Http.FlurlRequest.SendAsync(HttpMethod verb, HttpContent content, CancellationToken cancellationToken, HttpCompletionOption completionOption)
+   --- End of inner exception stack trace ---
+   at VasMicroservices.NCHE.Application.Services.NCHEService.PostPaymentAsync(PaymentRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Application\Services\NCHEService.cs:line 92
+   at VasMicroservices.NCHE.Presentation.Api.Controllers.MainController.PostTransaction(PostTransactionRequest request) in C:\Users\msasa.l\source\repos\VasMicroservices.NCHE\VasMicroservices.NCHE.Presentation.Api\Controllers\MainController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at CommonLibraries.Application.Exceptions.CustomExceptionMiddleware.InvokeAsync(HttpContext httpContext)
+2023-02-22 10:08:04.731 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5068/api/nche/postReceipt application/json 484 - 500 - application/json 33459.3391ms

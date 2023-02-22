@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VasMicroservices.NCHE.Application.Utilities;
 using VasMicroservices.NCHE.Infra.IoC;
 
 namespace VasMicroservices.NCHE.Presentation.Api
@@ -58,9 +59,17 @@ namespace VasMicroservices.NCHE.Presentation.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            FlurlHttp.Configure(settings => {
+            /*FlurlHttp.Configure(settings => {
                 settings.HttpClientFactory = new UntrustedCertClientFactory();
-            });
+            });*/
+            if (env.IsDevelopment() && Configuration["UseProxy"] == "True")
+            {
+                FlurlHttp.Configure(settings => {
+                    settings.HttpClientFactory = new ProxyHttpClientFactory(Configuration["General:Proxy"]);
+
+                });
+                app.UseDeveloperExceptionPage();
+            }
 
             var errors = new Dictionary<string, int>()
             {

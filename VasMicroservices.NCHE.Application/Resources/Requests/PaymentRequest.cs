@@ -14,7 +14,7 @@ namespace VasMicroservices.NCHE.Application.Resources.Requests
             public string? InvoiceNumber { get; set; }
 
             [JsonProperty("amount_paid")]
-            public string? AmountPaid { get; set; }
+            public decimal? AmountPaid { get; set; }
 
             [JsonProperty("reference_number")]
             public string? ReferenceNumber { get; set; }

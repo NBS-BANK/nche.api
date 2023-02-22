@@ -6,6 +6,6 @@ namespace VasMicroservices.NCHE.Application.Services
     public interface INCHEService
     {
         Task<PaymentResponse> PostPaymentAsync(PaymentRequest request);
-        Task<bool> ValidateInvoiceAsync(string invoiceNumber);
+        Task<Transaction> ValidateInvoiceAsync(string invoiceNumber);
     }
 }

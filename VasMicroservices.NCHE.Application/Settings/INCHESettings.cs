@@ -3,7 +3,7 @@
     public interface INCHESettings
     {
         string ClientId { get; }
-        string ClientKey { get; }
+        string AuthToken { get; }
         string Url { get; }
     }
 }

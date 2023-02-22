@@ -6,8 +6,7 @@ using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using VasMicroservices.NRB.Application.Resources.Responses;
-using VasMicroservices.NRB.Infrastructure.Data.Entities;
+using VasMicroservices.NCHE.Application.Resources.Responses;
 using Xunit;
 
 namespace NRB.Application.Test
@@ -22,7 +21,7 @@ namespace NRB.Application.Test
             this.fixture = fixture;
         }
         [Fact]
-        public async Task Test_PostReceipt_ThrowsFlurlException()
+        public async Task Test_PostTransaction_ThrowsFlurlException()
         {
            
             var call = new FlurlCall();
@@ -39,7 +38,7 @@ namespace NRB.Application.Test
                 new Exception("Error")
             );
 
-            fixture._apiService.Setup(x => x.PostAsync<ReceiptResponse>(
+            fixture._apiService.Setup(x => x.PostAsync<PaymentResponse>(
                   It.IsAny<string>(),
                   It.IsAny<Dictionary<string, string>>(),
                   It.IsAny<object>(),
@@ -48,20 +47,19 @@ namespace NRB.Application.Test
 
             await Assert.ThrowsAsync<FlurlHttpException>(async () =>
             {
-                var result = await fixture._service.PostReceiptAsync(
-                                       new VasMicroservices.NRB.Application.Resources.Requests.ReceiptRequest
-                                       {
+                var result = await fixture._service.PostPaymentAsync(
+                    new VasMicroservices.NCHE.Application.Resources.Requests.PaymentRequest
+                    {
 
-                                       }
-                );
+                    });
 
             });
         }
         [Fact]
-        public async Task Test_PostReceipt_ThrowsException()
+        public async Task Test_PostTransaction_ThrowsException()
         {
            
-            fixture._apiService.Setup(x => x.PostAsync<ReceiptResponse>(
+            fixture._apiService.Setup(x => x.PostAsync<PaymentResponse>(
                   It.IsAny<string>(),
                   It.IsAny<Dictionary<string, string>>(),
                   It.IsAny<object>(),
@@ -69,24 +67,26 @@ namespace NRB.Application.Test
                )).Throws<Exception>();
             await Assert.ThrowsAsync<Exception>(async () =>
             {
-                var result = await fixture._service.PostReceiptAsync(
-                        new VasMicroservices.NRB.Application.Resources.Requests.ReceiptRequest
-                        {
+                var result = await fixture._service.PostPaymentAsync(
+                   new VasMicroservices.NCHE.Application.Resources.Requests.PaymentRequest
+                   {
 
-                        }
-               );
+                   });
             });
 
         }
         [Fact]
-        public async Task Test_PostReceipt_Successful()
+        public async Task Test_PostTransaction_Successful()
         {
-            var response = new ReceiptResponse
+            var response = new PaymentResponse
             {
-                 CustomerId = "11111"
+                Transaction = new Transaction
+                {
+                     InvoiceNumber = "11111"
+                }
 
             };
-            fixture._apiService.Setup(x => x.PostAsync<ReceiptResponse>(
+            fixture._apiService.Setup(x => x.PostAsync<PaymentResponse>(
                   It.IsAny<string>(),
                   It.IsAny<Dictionary<string, string>>(),
                   It.IsAny<object>(),
@@ -95,60 +95,19 @@ namespace NRB.Application.Test
                   (response, 200)
             ));
 
-            var result = await fixture._service.PostReceiptAsync(
-                new VasMicroservices.NRB.Application.Resources.Requests.ReceiptRequest
-                {
+            var result = await fixture._service.PostPaymentAsync(
+                  new VasMicroservices.NCHE.Application.Resources.Requests.PaymentRequest
+                  {
 
-                }
-               );
-            Assert.NotNull(result);
-            Assert.IsType<ReceiptResponse>(result);
-            Assert.Equal("11111", result.CustomerId);
-            Assert.IsType<string>(result.CustomerId);
-
-        }
-        [Fact]
-        public async Task Test_GetServices_ThrowsException()
-        {
-            ICollection<PaymentServices> list = new List<PaymentServices>();
-            fixture._paymentServiceMock.Setup(
-                x => x.GetByConditionAsync(It.IsAny<Expression<Func<PaymentServices, bool>>>())
-                ).Returns(Task.FromResult(list));
-            fixture._apiService.Setup(x => x.GetAsync<ICollection<ServicesResponse>>(
-                   It.IsAny<string>(),
-                   It.IsAny<Dictionary<string, string>>(),
-                   It.IsAny<Func<string, string, int, Task>>()
-                )).Throws<Exception>();
-
-            await Assert.ThrowsAsync<Exception>(async () =>
-            {
-                var result = await fixture._service.GetServicesAsync();
             });
-            
-        }
-        [Fact]
-        public async Task Test_GetServices_Returns_List()
-        {
-            ICollection<ServicesResponse> serviceResponses = new List<ServicesResponse>()
-            {
-                new ServicesResponse
-                {
-
-                }
-            };
-            fixture._apiService.Setup(x => x.GetAsync<ICollection<ServicesResponse>>(
-                   It.IsAny<string>(),
-                   It.IsAny<Dictionary<string, string>>(),
-                   It.IsAny<Func<string, string, int, Task>>()
-                )).Returns(Task.FromResult(
-                   (serviceResponses, 200)
-             ));
-            var result = await fixture._service.GetServicesAsync();
             Assert.NotNull(result);
-            Assert.NotEmpty(result);
+            Assert.IsType<PaymentResponse>(result);
+            Assert.Equal("11111", result.Transaction.InvoiceNumber);
+
         }
+       
         [Fact]
-        public async Task Test_ValidateTransaction_TransactionNotFound_throwsFlurlException()
+        public async Task Test_ValidateInvoice_InvoiceNotFound_throwsFlurlException()
         {
             var callMock = new Mock<FlurlCall>();
             var call = new FlurlCall();
@@ -165,7 +124,7 @@ namespace NRB.Application.Test
                 new Exception("Error")
             );
            
-            fixture._apiService.Setup(x => x.GetAsync<ICollection<ValidateTransactionResponse>>(
+            fixture._apiService.Setup(x => x.GetAsync<ValidationResponse>(
                   It.IsAny<string>(),
                   It.IsAny<Dictionary<string, string>>(),
                   It.IsAny<Func<string, string, int, Task>>()
@@ -175,14 +134,14 @@ namespace NRB.Application.Test
             {
 
 
-                var result = await fixture._service.ValidateTransactionAsync("1235");
+                var result = await fixture._service.ValidateInvoiceAsync("500");
 
             });
         }
         [Fact]
-        public async Task Test_ValidateTransaction_TransactionNotFound_throwsException()
+        public async Task Test_ValidateInvoice_InvoiceNotFound_throwsException()
         {
-            fixture._apiService.Setup(x => x.GetAsync<ICollection<ValidateTransactionResponse>>(
+            fixture._apiService.Setup(x => x.GetAsync<ValidationResponse>(
                   It.IsAny<string>(),
                   It.IsAny<Dictionary<string, string>>(),
                   It.IsAny<Func<string, string, int, Task>>()
@@ -192,34 +151,29 @@ namespace NRB.Application.Test
             {
              
 
-                var result = await fixture._service.ValidateTransactionAsync("1235");
+                var result = await fixture._service.ValidateInvoiceAsync("404");
 
             });
          }
         [Fact]
-        public async Task Test_ValidateTransaction_TransactionFound_ReturnsCollection()
+        public async Task Test_ValidateInvoice_InvoiceFound_ReturnsTransaction()
         {
-            ICollection<ValidateTransactionResponse> responses = new List<ValidateTransactionResponse>()
+            var response = new ValidationResponse
             {
-                new ValidateTransactionResponse
-                {
-                    TokenId = "1234"
-                },
-                 new ValidateTransactionResponse
-                {
-                    TokenId = "12344"
-                }
-
+                 Transaction = new Transaction
+                 {
+                     InvoiceNumber = "200"
+                 }
             };
-            fixture._apiService.Setup(x => x.GetAsync<ICollection<ValidateTransactionResponse>>(
+            fixture._apiService.Setup(x => x.GetAsync<ValidationResponse>(
                It.IsAny<string>(),
                It.IsAny<Dictionary<string, string>>(),
                It.IsAny<Func<string, string, int, Task>>()
-               )).Returns(Task.FromResult((responses,200)));
+               )).Returns(Task.FromResult((response,200)));
 
-            var result = await fixture._service.ValidateTransactionAsync("1235");
-            Assert.NotNull(result);
-            Assert.NotEmpty(result);
+            var result = await fixture._service.ValidateInvoiceAsync("200");
+            Assert.True(result.InvoiceNumber == "200");
+            
         }
        
     }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VasMicroservices.NCHE.Application.Constants;
 using VasMicroservices.NCHE.Application.DTOs;
 using VasMicroservices.NCHE.Application.Resources.Requests;
 using VasMicroservices.NCHE.Application.Resources.Responses;
@@ -19,6 +20,7 @@ namespace VasMicroservices.NCHE.Application.Services
         private readonly INCHESettings _settings;
         private readonly IApiRequestService _requestService;
         private readonly IService<EndpointLog, EndpointLogDto, NCHEPaymentsContext> _logService;
+        
 
         public NCHEService(INCHESettings settings, IApiRequestService requestService,
             IService<EndpointLog, EndpointLogDto, NCHEPaymentsContext> logService)
@@ -37,7 +39,9 @@ namespace VasMicroservices.NCHE.Application.Services
                 log.RequestTime = DateTime.Now;
                 var response = await _requestService.PostAsync<PaymentResponse>(url,
                     new Dictionary<string, string> {
-                        { "Content-Type", "application/json" },
+                           { "Content-Type", "application/json" },
+                           { "Accept", "application/json" },
+                           {"Authorization", $"Bearer {_settings.AuthToken}" }
 
 
                         }
@@ -55,16 +59,15 @@ namespace VasMicroservices.NCHE.Application.Services
                     });
                 if (response.statusCode == 200 || response.statusCode == 201)
                 {
-                    log.Success = 1;
-                    log.Message = "transaction has been successfully posted";
+                    log.Success = response.result.Status == Codes.SUCCESSFUL ? 1 : 0;
+                    log.Message = $"transaction has been successfully created with status {response.result.Status} and message: {response.result.Message}";
                 }
                 else
                 {
-                    if (response.statusCode == 409)
-                    {
-                        log.Success = 0;
-                        log.Message = "a dublicate receipt record was sent";
-                    }
+                   
+                     log.Success = 0;
+                     log.Message = $"Status Code {response.statusCode} with status {response.result.Status} and message: {response.result.Message}"; ;
+                    
                 }
                 await _logService.CreateAsync(log);
                 return response.result;
@@ -102,16 +105,18 @@ namespace VasMicroservices.NCHE.Application.Services
             }
 
         }
-        public async Task<bool> ValidateInvoiceAsync(string invoiceNumber)
+        public async Task<Transaction> ValidateInvoiceAsync(string invoiceNumber)
         {
 
             var url = $"{_settings.Url}?invoice_number={invoiceNumber}";
             var log = new EndpointLog();
             try
             {
-                var response = await _requestService.GetAsync<EmptyResponse>(url,
+                var response = await _requestService.GetAsync<ValidationResponse>(url,
                    new Dictionary<string, string> {
                        { "Content-Type", "application/json" },
+                       { "Accept", "application/json" },
+                       {"Authorization", $"Bearer {_settings.AuthToken}" }
 
                    },
                    async (req, resp, code) =>
@@ -130,13 +135,9 @@ namespace VasMicroservices.NCHE.Application.Services
                 if (response.statusCode == 200)
                 {
                     log.Success = 1;
-                    log.Message = "The request was successful";
+                    log.Message = response.result.CandidateExists ? $"The request was successful. Invoice {invoiceNumber} found" : $"The request was successful but invoice {invoiceNumber} was not found";
                 }
-                else if (response.statusCode == 404 || response.statusCode == 204)
-                {
-                    log.Success = 0;
-                    log.Message = $"Invoice Number {invoiceNumber} not found";
-                }
+               
                 else
                 {
                     log.Success = 0;
@@ -144,7 +145,7 @@ namespace VasMicroservices.NCHE.Application.Services
 
                 }
                 await _logService.CreateAsync(log);
-                return response.statusCode == 200;
+                return response.result.Transaction;
 
             }
             catch (FlurlHttpException ex)
