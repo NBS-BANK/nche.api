@@ -18,18 +18,15 @@ namespace VasMicroservices.NCHE.Infra.Data.Entities
 
         public VasOfsLog? OfsLog { get; set; }  
         public string? PaymentReferenceNumber { get; set; }
-        public string? Code { get; set; }
-        public string? ServiceName { get; set; }
-        public string? CustomerId { get; set; }
+        public string? InvoiceNumber { get; set; }
         public string? CustomerName { get; set; }
-        public string? CustomerPhone { get; set; }
-        public string? PaymentDetails { get; set; }
         public decimal Amount { get; set; }     
         public int? Reversed { get; set; }
         public DateTime? ReversedTime { get; set; }
-        public string? NcheTxnRef { get; set; }
         public int? NchestatusCode { get; set; }
-        public string? RequestString { get; set; }
-        public string? ResponseString { get; set; }
+
+        public decimal? ApplicationFee { get; set; }
+
+        public decimal? Balance { get; set; }
     }
 }

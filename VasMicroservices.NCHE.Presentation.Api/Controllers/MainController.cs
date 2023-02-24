@@ -44,6 +44,30 @@ namespace VasMicroservices.NCHE.Presentation.Api.Controllers
             }
             var logResult = await _paymentLogService.CreateAsync(new VasPayment
             {
+               Amount = Convert.ToDecimal(result.Transaction.AmountPaid),
+               CustomerName = $"{ result.Transaction.FirstName} {result.Transaction.LastName}",
+               InvoiceNumber = result.Transaction.InvoiceNumber,
+               NchestatusCode = result.Status,
+               PaymentReferenceNumber = result.Transaction.ReferenceNumber,
+               OfsLog = new VasOfsLog
+               {
+                  DebitAccountNumber = request.VasLog?.DebitAccountNumber,
+                  OfscompanyCode = request.VasLog?.OfscompanyCode,
+                  Ofsmessage = request.VasLog?.Ofsmessage,
+                  Ofsrequest = request.VasLog?.Ofsrequest,
+                  Ofsresponse = request.VasLog?.Ofsresponse,
+                  Ofssuccess = request.VasLog?.Ofssuccess,
+                  TellerId = request.VasLog?.TellerId,
+                  TellerName = request.VasLog?.TellerName,
+                  TxnRef = request.VasLog?.TxnRef                 
+
+               },
+               Balance = Convert.ToDecimal(result.Transaction.Balance),
+               ApplicationFee = Convert.ToDecimal(result.Transaction.ApplicationFee),
+               TransactionDate = DateTime.Now
+
+              
+
 
             });
             return Ok(new { posted = result.Status == Codes.SUCCESSFUL, logged = logResult != null });

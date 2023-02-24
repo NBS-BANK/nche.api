@@ -38,15 +38,15 @@ namespace VasMicroservices.NCHE.Application.Resources.Responses
         public string LastName { get; set; }
 
         [JsonProperty("amount_paid")]
-        public object AmountPaid { get; set; }
+        public double AmountPaid { get; set; }
 
         [JsonProperty("application_fee")]
         public string ApplicationFee { get; set; }
 
         [JsonProperty("balance")]
-        public object Balance { get; set; }
+        public double Balance { get; set; }
 
         [JsonProperty("reference_number")]
-        public object ReferenceNumber { get; set; }
+        public string ReferenceNumber { get; set; }
     }
 }
